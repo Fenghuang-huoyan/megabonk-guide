@@ -22,7 +22,7 @@ export const siteConfig = {
   homeDescription:
     'Unofficial English Megabonk wiki for Steam AppID 3405340. Skimmable guides for the first runs, characters, unlocks, weapons, tomes, and later tiers. Opinion picks are labeled. Not an interactive build planner.',
   analytics: {
-    gaId: '',
+    gaId: 'G-451MK1DMXF',
   },
   art: {
     hero: '/images/official/steam/library-hero.jpg',
