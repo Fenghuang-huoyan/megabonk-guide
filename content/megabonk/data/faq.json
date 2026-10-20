@@ -1,0 +1,47 @@
+[
+  {
+    "q": "Is this an official Megabonk site?",
+    "a": "No. megabonkguide.wiki is a fan guide. It is not affiliated with, endorsed by, or sponsored by vedinad, Valve, or Steam.",
+    "featured": true
+  },
+  {
+    "q": "Who do I start as?",
+    "a": "Fox and Sir Oofie are the two characters public wikis list as available immediately. Fox starts with the Firestaff and gains Luck as you level. Sir Oofie starts with the Sword and gains Armor. Everyone else is an unlock, then a Silver purchase.",
+    "featured": true
+  },
+  {
+    "q": "Why does the Steam page say 20 characters if guides list 21?",
+    "a": "The store description still says 20 characters, 240 in-game quests, and 70+ items. That copy was checked on 20 Oct 2026, and the store asset timestamp is 14 Oct 2025, before the December 2025 Spooky update that announced a new character, weapon, map, and items. Community rosters in 2026 list 21 characters. Use the in-game Unlocks menu as the live count.",
+    "featured": true
+  },
+  {
+    "q": "Where is the interactive build planner?",
+    "a": "Not here, on purpose. This wiki is a skimmable guide. Build notes are labeled opinion. Full item databases and live planners live elsewhere, and their numbers do not always match.",
+    "featured": true
+  },
+  {
+    "q": "How much does Megabonk cost?",
+    "a": "The Steam store API on 20 Oct 2026 listed a US price of $9.99, not free. Windows and Linux are the store platforms. Mac was not listed. There is a demo (AppID 3520070) and a soundtrack DLC (AppID 4046730). Prices move.",
+    "featured": true
+  },
+  {
+    "q": "How do unlocks actually stick?",
+    "a": "Meeting a requirement is the first step. Character, weapon, and tome write-ups say you still buy the unlock with Silver from the Unlocks tab. Quest milestones for extra slots, Banish, Skip, and Refresh are also described as shop purchases, not instant inventory.",
+    "featured": false
+  },
+  {
+    "q": "How many Steam achievements are there?",
+    "a": "The Steam store API reported 139 achievements on 20 Oct 2026, and the public Steam achievement page showed the same total. Some fan wikis count a larger set that mixes in-game quests or later goals. The store text separately advertises 240 in-game quests. Those are not the same list.",
+    "featured": false
+  },
+  {
+    "q": "How do I reach the Desert?",
+    "a": "A Steam achievement named Desert is described as teleporting to the 2nd stage on Forest Tier 2 as CL4NK. The Megabonk Wiki’s world page says the same route. CL4NK itself is the Forest Tier 1 clear, then a purchase.",
+    "featured": false
+  },
+  {
+    "q": "Will the numbers on these pages stay true?",
+    "a": "No. Patches change passives, unlock text, and shrine rewards. Where two public wikis already disagree, this site keeps the point general or says so. The in-game tooltip wins.",
+    "featured": false
+  }
+]

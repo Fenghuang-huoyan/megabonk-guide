@@ -1,0 +1,48 @@
+Official Steam store assets for Megabonk (AppID 3405340).
+Self-hosted so the wiki does not hotlink the Steam CDN.
+Fan site: not affiliated with vedinad, Ved, Valve, or Steam.
+Store page: https://store.steampowered.com/app/3405340/Megabonk/
+Downloaded 20 Oct 2026. URLs below returned HTTP 200.
+
+library-hero.jpg
+  Steam library hero, 1920x620
+  https://cdn.akamai.steamstatic.com/steam/apps/3405340/library_hero.jpg
+  The same path also responded on shared.akamai.steamstatic.com,
+  cdn.cloudflare.steamstatic.com, and shared.fastly.steamstatic.com.
+
+header.jpg
+  Classic store header, 460x215
+  https://cdn.akamai.steamstatic.com/steam/apps/3405340/header.jpg
+  A hashed header also returned 200 and was not shipped (same logo art):
+  https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405340/d06cb39a82a703e42541085fc61b42d80904b3f8/header.jpg?t=1760445338
+
+capsule-616x353.jpg
+  Store capsule, 616x353
+  https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405340/8c557b0ace38af77f6e49eaa6aafa29ccea4b987/capsule_616x353.jpg?t=1760445338
+
+ss-00.jpg
+  Official store screenshot thumbnail, 600x338. Combat in a rocky canyon.
+  https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405340/ce4d8d24a3731a91490ab92b8687f07314c600b9/ss_ce4d8d24a3731a91490ab92b8687f07314c600b9.600x338.jpg?t=1760445338
+
+ss-01.jpg
+  Official store screenshot thumbnail, 600x338. Forest, staff, XP gems.
+  https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405340/9ecc4f12f9031e38e546e80416c98eab310dea8b/ss_9ecc4f12f9031e38e546e80416c98eab310dea8b.600x338.jpg?t=1760445338
+
+ss-02.jpg
+  Official store screenshot thumbnail, 600x338. Surrounded in a forest clearing.
+  https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405340/b1e906ba6bbac4b9017fb786a1b2d88ec3b41578/ss_b1e906ba6bbac4b9017fb786a1b2d88ec3b41578.600x338.jpg?t=1760445338
+
+ss-03.jpg
+  Official store screenshot thumbnail, 600x338. Close character and a level-up panel.
+  https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405340/3cb8c4f7ded582a7a26f483de08bbd4f91eea2bc/ss_3cb8c4f7ded582a7a26f483de08bbd4f91eea2bc.600x338.jpg?t=1760445338
+
+ss-04.jpg
+  Official store screenshot thumbnail, 600x338. Top-down swarm with projectiles and a minimap.
+  https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405340/37fee9ad83231587004b29d0532b9309d1efd8df/ss_37fee9ad83231587004b29d0532b9309d1efd8df.600x338.jpg?t=1760445338
+
+ss-05.jpg
+  Official store screenshot thumbnail, 600x338. Forest character beside a glowing shrine.
+  https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405340/1d012ef02e5fbd1ed8245a62d60d620b25e84856/ss_1d012ef02e5fbd1ed8245a62d60d620b25e84856.600x338.jpg?t=1760445338
+
+library_600x900.jpg on the CDN responded, but the file served on 20 Oct 2026
+was 300x450, so it is not in this folder.

@@ -1,0 +1,12 @@
+{
+  "release": "18 Sep 2025",
+  "price": "$9.99",
+  "priceNote": "US Steam price from the store API on 20 Oct 2026. It has been discounted before.",
+  "peak": "116,969",
+  "peakNote": "SteamCharts all-time peak, October 2025. Live counts are much lower and differ by tracker.",
+  "achievements": "139",
+  "achievementsNote": "Steam achievements on the store API, 20 Oct 2026. Separate from the 240 in-game quests in the store text.",
+  "reviews": "Very Positive",
+  "reviewsNote": "93% of 58,632 English reviews on the Steam page, 20 Oct 2026. Recent 30 days were 88% of 1,150.",
+  "platforms": "Windows and Linux"
+}

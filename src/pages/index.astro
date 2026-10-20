@@ -1,0 +1,235 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@framework/layouts/BaseLayout.astro';
+import QuickAnswer from '@framework/components/QuickAnswer.astro';
+import AdSlot from '@framework/components/AdSlot.astro';
+import FaqList from '@framework/components/FaqList.astro';
+import { loadData } from '@framework/lib/content';
+import { siteConfig } from '@site/site.config';
+import { faqJsonLd, websiteJsonLd } from '@framework/lib/seo';
+
+const meta = loadData<{
+  release: string;
+  price: string;
+  priceNote: string;
+  peak: string;
+  peakNote: string;
+  achievements: string;
+  achievementsNote: string;
+  reviews: string;
+  reviewsNote: string;
+  platforms: string;
+}>('meta');
+
+const faq = loadData<{ q: string; a: string; featured?: boolean }[]>('faq');
+const pages = (await getCollection('pages')).sort((a, b) => a.data.order - b.data.order);
+
+const art = {
+  header: '/images/official/steam/header.jpg',
+  canyon: '/images/official/steam/ss-00.jpg',
+  forest: '/images/official/steam/ss-01.jpg',
+  swarm: '/images/official/steam/ss-02.jpg',
+  levelup: '/images/official/steam/ss-03.jpg',
+  topdown: '/images/official/steam/ss-04.jpg',
+  shrine: '/images/official/steam/ss-05.jpg',
+  capsule: '/images/official/steam/capsule-616x353.jpg',
+};
+
+const guideArt: Record<string, string> = {
+  'beginner-guide': art.forest,
+  characters: art.levelup,
+  unlocks: art.capsule,
+  weapons: art.canyon,
+  tomes: art.levelup,
+  items: art.shrine,
+  builds: art.topdown,
+  maps: art.swarm,
+  shrines: art.shrine,
+  'late-game': art.topdown,
+  faq: art.header,
+};
+
+const doors = [
+  {
+    href: '/beginner-guide',
+    num: '01',
+    title: 'First runs',
+    text: 'Fox or Sir Oofie, the Forest, and what to buy with Silver after you die.',
+    image: art.forest,
+  },
+  {
+    href: '/characters',
+    num: '02',
+    title: 'Characters',
+    text: 'How each one unlocks, what they start holding, and the strength to build around.',
+    image: art.levelup,
+  },
+  {
+    href: '/unlocks',
+    num: '03',
+    title: 'Unlocks',
+    text: 'Quests, the Unlocks menu, and why a requirement met is not the same as owned.',
+    image: art.capsule,
+  },
+  {
+    href: '/weapons',
+    num: '04',
+    title: 'Weapons',
+    text: 'The seven you start with, and the grind that puts the rest in the pool.',
+    image: art.canyon,
+  },
+  {
+    href: '/builds',
+    num: '05',
+    title: 'Builds',
+    text: 'Opinion picks, labeled as opinion. Not a live planner.',
+    image: art.topdown,
+  },
+  {
+    href: '/late-game',
+    num: '06',
+    title: 'Later tiers',
+    text: 'Final swarms, Desert, Graveyard, and the shrines that punish greed.',
+    image: art.swarm,
+  },
+];
+---
+<BaseLayout
+  title={siteConfig.homeTitle}
+  description={siteConfig.homeDescription}
+  jsonLd={[
+    websiteJsonLd(),
+    faqJsonLd(faq.filter((item) => item.featured).map((item) => ({ q: item.q, a: item.a }))),
+  ]}
+>
+  <main id="content">
+    <div class="shell">
+      <p class="tape">
+        <span>Fan guide · not affiliated with vedinad</span>
+        <span>Steam App {siteConfig.steamAppId}</span>
+        <span>{siteConfig.version.label}</span>
+      </p>
+
+      <section class="town-hero">
+        <img
+          class="hero-art"
+          src={siteConfig.art.hero}
+          alt={siteConfig.art.heroAlt}
+          width="1920"
+          height="620"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <div class="hero-panel">
+          <p class="kicker">{siteConfig.developer} · {meta.price} on Steam · {meta.release}</p>
+          <h1>Megabonk, without the build calculator.</h1>
+          <p class="lede">
+            A fan guide for the horde game: <em>who to unlock</em>, what the weapons and tomes are for,
+            and how a later tier actually kills you. Interactive planners already exist. This one you can skim.
+          </p>
+          <div class="cta-row">
+            <a class="btn" href="/beginner-guide">First runs</a>
+            <a class="btn ghost" href="/characters">Characters</a>
+            <a class="btn ghost" href={siteConfig.steamUrl}>View on Steam</a>
+          </div>
+          <p class="version-note">{siteConfig.version.detail}</p>
+        </div>
+      </section>
+      <p class="art-credit">
+        Library hero and screenshots are official Steam store assets for App {siteConfig.steamAppId}. See the attribution file shipped with the images.
+      </p>
+
+      <section class="section">
+        <h2>Six doors</h2>
+        <p class="section-intro">
+          Start with the page that matches the run you just lost. The rest of the guide is the same idea, written out.
+        </p>
+        <div class="door-grid">
+          {doors.map((door) => (
+            <a class="door" href={door.href}>
+              <span class="card-art">
+                <img src={door.image} alt="" width="600" height="338" decoding="async" />
+                <span class="num">{door.num}</span>
+              </span>
+              <span class="card-copy">
+                <h3>{door.title}</h3>
+                <p>{door.text}</p>
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="stat-row" aria-label="Steam figures">
+        <div class="stat"><strong>{meta.price}</strong><span>{meta.priceNote}</span></div>
+        <div class="stat"><strong>{meta.reviews}</strong><span>{meta.reviewsNote}</span></div>
+        <div class="stat"><strong>{meta.peak}</strong><span>{meta.peakNote}</span></div>
+        <div class="stat"><strong>{meta.achievements}</strong><span>{meta.achievementsNote}</span></div>
+      </section>
+
+      <section class="section home-quick">
+        <QuickAnswer
+          sentences={[
+            'Megabonk is vedinad’s single-player roguelike survival game on Steam: random maps, XP, weapons, and builds that get ridiculous if the run lives.',
+            'You start as Fox or Sir Oofie. Everyone else is an unlock, then a Silver purchase in the Unlocks menu.',
+            'The Steam store text still says 20 characters and 70+ items. Later patches added more. Treat those bullets as the launch pitch.',
+            'Build rankings on this site are opinion. Per-level numbers are omitted wherever two public wikis disagree.',
+          ]}
+        />
+        <AdSlot name="afterQuickAnswer" />
+      </section>
+
+      <section class="section">
+        <h2>The pages</h2>
+        <p class="section-intro">
+          English only. If a figure is from a community wiki and not from Steam, the article says so.
+        </p>
+        <div class="card-grid">
+          {pages.map((page) => (
+            <a class="guide-card" href={`/${page.id}`}>
+              <span class="card-art">
+                <img src={guideArt[page.id] ?? art.header} alt="" width="600" height="338" loading="lazy" decoding="async" />
+              </span>
+              <span class="card-copy">
+                <span class="section-tag">{page.data.section}</span>
+                <h3>{page.data.h1}</h3>
+                <p>{page.data.description}</p>
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="scope">
+          <div>
+            <h2>What this wiki is for</h2>
+            <p>
+              Interactive build tools already cover live loadouts. Full item tables live on {siteConfig.databases.map((db, i) => (
+                <>
+                  <a href={db.href}>{db.label}</a>
+                  {i < siteConfig.databases.length - 1 ? ', ' : ''}
+                </>
+              ))}. Those counts do not always match each other, or the Steam store blurb.
+            </p>
+            <p>
+              This site stays on the skim: a first-run path, every character’s unlock and strength, weapons and tomes, an unlock route, and later-tier tips. Opinion is marked. We do not ship a planner.
+            </p>
+          </div>
+          <div>
+            <h2>In Steam’s words</h2>
+            <p>
+              vedinad shipped Megabonk on Steam on {meta.release}. The store calls it a roguelike survival game about hordes, bosses, random maps, and random upgrade offers. Platforms listed: {meta.platforms}. Support mail on the store page is {siteConfig.supportEmail}.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section home-faq">
+        <h2>Short answers</h2>
+        <FaqList featuredOnly />
+        <p><a class="text-link" href="/faq">All FAQ</a></p>
+      </section>
+    </div>
+  </main>
+</BaseLayout>
