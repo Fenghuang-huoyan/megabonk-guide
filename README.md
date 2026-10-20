@@ -9,13 +9,13 @@ Not affiliated with vedinad. The site does not try to be an interactive build pl
 | Layer | Path | Role |
 | --- | --- | --- |
 | Site config | `sites/megabonkguide/site.config.ts` | Domain, Steam AppID, analytics, nav |
-| Ads | `sites/megabonkguide/ads.config.ts` | Adsterra slot after Quick Answer; zone key empty |
+| Ads | `sites/megabonkguide/ads.config.ts` | Adsterra Native Banner after Quick Answer |
 | Active site | `sites/active` → `megabonkguide` | What the build actually reads |
 | Framework | `framework/` | Layout, Quick Answer, ad slot, SEO |
 | Content | `content/megabonk/` | Guide pages and JSON |
 | Routes | `src/pages/` | Home, guide slug, 404 |
 
-`analytics.gaId` is empty, so production pages do not load Google Analytics. Guide pages do not load an Adsterra script until `afterQuickAnswer.id` and `invokeBase` are set for this game. See [ADS.md](ADS.md).
+`analytics.gaId` is empty, so production pages do not load Google Analytics. The homepage and guide pages load one Adsterra Native Banner after Quick Answer. See [ADS.md](ADS.md).
 
 ## Scripts
 

@@ -1,17 +1,20 @@
 /**
- * Adsterra Native Banner for guide pages, directly after Quick Answer.
+ * Adsterra Native Banner, directly after Quick Answer on the homepage and guide pages.
  *
- * The Megabonk zone is not filled in yet. Leave `afterQuickAnswer.id` empty
- * until the real zone key exists, and set `invokeBase` to that zone's host.
- * Do not paste a key or invoke host from another game.
+ * This zone's invoke URL has no `/invoke.js` suffix. Set `scriptSrc` to the
+ * full script URL Adsterra issued for this site. Do not paste a key or host
+ * from another game.
  *
- * Script URL, once both are set: `${invokeBase}/${id}/invoke.js`
+ * When `scriptSrc` is empty, the fallback is still `${invokeBase}/${id}/invoke.js`.
  * Adult and sensitive categories stay off. Other slots stay on ADSTERRA_
- * placeholders and do not request a script. Guide pages share this one zone.
+ * placeholders and do not request a script. Only afterQuickAnswer is live,
+ * so the script is emitted once per page. The 404 page does not render a slot.
  */
 export type AdSlotConfig = {
   id: string;
   format: string;
+  /** Full script URL. When set, used instead of `${invokeBase}/${id}/invoke.js`. */
+  scriptSrc?: string;
   invokeBase?: string;
   containerPrefix?: string;
 };
@@ -19,8 +22,9 @@ export type AdSlotConfig = {
 const slots = {
   homeHero: { id: 'ADSTERRA_HOME_HERO', format: '728x90' },
   afterQuickAnswer: {
-    id: '',
+    id: '5cc53c8c07895d04f9f59e3df385ffad',
     format: 'native-banner',
+    scriptSrc: 'https://bauval.org/21/5cc53c8c07895d04f9f59e3df385ffad',
   },
   midArticle: { id: 'ADSTERRA_MID_ARTICLE', format: 'in-article' },
   sidebar: { id: 'ADSTERRA_SIDEBAR', format: '300x250' },
@@ -31,6 +35,8 @@ export const adsConfig = {
   network: 'adsterra' as const,
   enabled: true,
   invokeBase: '',
+  /** Site-wide full script URL. A slot `scriptSrc` overrides this. */
+  scriptSrc: '',
   containerPrefix: 'container-',
   slots,
 };
@@ -42,16 +48,18 @@ export function resolveAdPlacement(name: AdSlotName) {
   const invokeBase = (slot.invokeBase ?? adsConfig.invokeBase).replace(/\/$/, '');
   const containerPrefix = slot.containerPrefix ?? adsConfig.containerPrefix;
   const id = slot.id.trim();
+  const explicitSrc = (slot.scriptSrc ?? adsConfig.scriptSrc).trim();
+  const scriptSrc = explicitSrc || (id && invokeBase ? `${invokeBase}/${id}/invoke.js` : '');
   return {
     id,
     format: slot.format,
     invokeBase,
     containerId: `${containerPrefix}${id}`,
-    scriptSrc: id && invokeBase ? `${invokeBase}/${id}/invoke.js` : '',
+    scriptSrc,
     active:
       adsConfig.enabled &&
       id.length > 0 &&
       !id.startsWith('ADSTERRA_') &&
-      invokeBase.length > 0,
+      scriptSrc.length > 0,
   };
 }
